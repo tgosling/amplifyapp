@@ -1,6 +1,4 @@
 {
-    "identityPoolName": "amplifyappde22c2ab_identitypool_de22c2ab",
-    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "amplifde22c2ab",
     "userPoolName": "amplifyappde22c2ab_userpool_de22c2ab",
     "autoVerifiedAttributes": [
@@ -14,9 +12,13 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": false,
+    "defaultPasswordPolicy": true,
     "passwordPolicyMinLength": 8,
-    "passwordPolicyCharacters": [],
+    "passwordPolicyCharacters": [
+        "Requires Lowercase",
+        "Requires Uppercase",
+        "Requires Numbers"
+    ],
     "requiredAttributes": [
         "email"
     ],
@@ -26,13 +28,16 @@
         "email"
     ],
     "userpoolClientReadAttributes": [
-        "email"
+        "email",
+        "name",
+        "nickname",
+        "phone_number"
     ],
     "userpoolClientLambdaRole": "amplifde22c2ab_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": false,
+    "userpoolClientSetAttributes": true,
     "sharedId": "de22c2ab",
     "resourceName": "amplifyappde22c2ab",
-    "authSelections": "identityPoolAndUserPool",
+    "authSelections": "userPoolOnly",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -45,8 +50,37 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
-    "userPoolGroupList": [],
+    "useDefault": "manual",
+    "userPoolGroupList": [
+        "users"
+    ],
     "serviceName": "Cognito",
-    "dependsOn": []
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "amplifyappde22c2abCustomMessage",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ],
+    "userPoolGroups": true,
+    "adminQueries": true,
+    "triggers": "{\n  \"CustomMessage\": [\n    \"verification-link\"\n  ]\n}",
+    "hostedUI": true,
+    "hostedUIDomainName": "amplifyapp16d42701-16d42701",
+    "authProvidersUserPool": [
+        "Facebook",
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.dxq61b0ab7g0s.amplifyapp.com/\"],\"LogoutURLs\":[\"https://master.dxq61b0ab7g0s.amplifyapp.com/\"]}",
+    "adminQueryGroup": "admins",
+    "verificationBucketName": "amplifyappde22c2abverificationbucket",
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": []
 }

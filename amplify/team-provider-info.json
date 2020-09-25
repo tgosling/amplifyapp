@@ -13,7 +13,16 @@
     },
     "categories": {
       "auth": {
-        "amplifyappde22c2ab": {}
+        "amplifyappde22c2ab": {
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"na\",\"client_secret\":\"na\"},{\"ProviderName\":\"Google\",\"client_id\":\"na\",\"client_secret\":\"na\"}]"
+        }
+      },
+      "function": {
+        "amplifyappde22c2abCustomMessage": {
+          "REDIRECTURL": "https://master.dxq61b0ab7g0s.amplifyapp.com/",
+          "EMAILSUBJECT": "Verify your account!",
+          "EMAILMESSAGE": "eeeeee"
+        }
       }
     }
   }
